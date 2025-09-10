@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>LCIC DEMO</title>
+    <style>
+      input {
+        display: block;
+        margin: 10px 0;
+        padding: 5px;
+        width: 400px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>LCIC DEMO</h1>
+    <a href="https://class.qcloudclass.com/latest/login.html?lng=zh">从 demo页 创建</a>
+    <input type="text" id="classid" placeholder="Enter your classid">
+    <input type="text" id="userid" placeholder="Enter your userid">
+    <input type="text" id="token" placeholder="Enter your token">
+    <button id="submit">进入</button>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const classInfo = JSON.parse(localStorage.getItem('classInfo'));
+        if (classInfo) {
+          document.getElementById('classid').value = classInfo.classid;
+          document.getElementById('userid').value = classInfo.userid;
+          document.getElementById('token').value = classInfo.token;
+        }
+      })
+      
+      document.getElementById('submit').addEventListener('click', function() {
+        var classid = document.getElementById('classid').value;
+        var userid = document.getElementById('userid').value;
+        var token = document.getElementById('token').value;
+        localStorage.setItem('classInfo', JSON.stringify({ classid, userid, token }));
+        sdk.createClass({ classid, userid, token })
+      });
+    </script>
+  </body>
+</html>

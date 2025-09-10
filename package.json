@@ -1,0 +1,44 @@
+{
+  "name": "tcic-electron",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron .",
+    "build": "electron-builder --mac"
+  },
+  "overrides": {
+    "trtc-electron-sdk": {
+      "version": "12.5.705-beta.0"
+    }
+  },
+  "build": {
+    "productName": "tcic-demo",
+    "mac": {
+      "target": "dmg",
+      "extraFiles": [
+        {
+          "from": "node_modules/trtc-electron-sdk/build/Release/${arch}/trtc_electron_sdk.node",
+          "to": "./"
+        },
+        {
+          "from": "node_modules/trtc-electron-sdk/build/mac-framework/${arch}/",
+          "to": "./Frameworks"
+        }
+      ]
+    }
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lcic-electron-hotupdater": "^0.1.0-latest.6",
+    "tcic-electron-sdk": "^1.10.0-beta.250909.2052.7",
+    "trtc-electron-sdk": "^12.5.705-beta.0"
+  },
+  "devDependencies": {
+    "electron": "24.8.8",
+    "electron-builder": "^25.1.8"
+  }
+}
