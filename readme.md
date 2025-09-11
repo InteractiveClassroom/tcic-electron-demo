@@ -24,3 +24,7 @@ npm i trtc-electron-plugin-xmagic --save
 XMagicLicenseURL=https://license.vod2.myqcloud.com/license/xxxxxxxxx/v_cube.license
 XMagicLicenseKey=xxxxx
 ```
+#### 自定义虚拟背景
+
+如果需要自定义虚拟背景，请在项目下创建 img目录，并提供图片和一个 virtual-bg.js用于返回图片路径信息
+在打包时将 img目录打包到 resource目录下，具体方法可参考这个分支: https://github.com/InteractiveClassroom/tcic-electron-demo/tree/feat/xmagic
