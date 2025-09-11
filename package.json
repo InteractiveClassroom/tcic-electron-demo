@@ -15,6 +15,10 @@
       {
         "from": "./.profile",
         "to": "./"
+      },
+      {
+        "from": "./img",
+        "to": "./img"
       }
     ],
     "mac": {
@@ -36,7 +40,7 @@
   "license": "ISC",
   "dependencies": {
     "lcic-electron-hotupdater": "^0.1.0-latest.6",
-    "tcic-electron-sdk": "^1.10.0-beta.250909.2052.7",
+    "tcic-electron-sdk": "^1.10.0-beta.250911.1653.49",
     "trtc-electron-plugin-xmagic": "^1.0.2",
     "trtc-electron-sdk": "^12.5.705-beta.0"
   },
