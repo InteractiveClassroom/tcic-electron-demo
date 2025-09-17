@@ -15,6 +15,44 @@
   },
   "build": {
     "productName": "tcic-demo",
+    "asarUnpack": [
+      "**/*.{node,dll}",
+      "**/node_modules/**/tcic-electron-sdk/dist/assets/**/*",
+      "**/node_modules/**/trtc-electron-sdk/build/**/*"
+    ],
+    "win": {
+      "target": ["nsis","zip"],
+      "extraFiles": [
+        {
+          "from": "node_modules/trtc-electron-sdk/build/Release/",
+          "to": "./resources",
+          "filter": [
+            "**/*"
+          ]
+        },
+        {
+          "from": "node_modules/trtc-electron-plugin-xmagic/plugin/XMagic/win/${arch}/platforms/",
+          "to": "./platforms",
+          "filter": [
+            "**/*"
+          ]
+        },
+        {
+          "from": "node_modules/trtc-electron-plugin-xmagic/plugin/XMagic/win/${arch}/",
+          "to": "./resources/app/plugin/XMagic/win/${arch}/",
+          "filter": [
+            "**/*"
+          ]
+        },
+        {
+          "from": "node_modules/trtc-electron-plugin-xmagic/plugin/XMagic/win/res/",
+          "to": "./resources/app/plugin/XMagic/win/res/",
+          "filter": [
+            "**/*"
+          ]
+        }
+      ]
+    },
     "mac": {
       "target": "dmg",
       "extraFiles": [
