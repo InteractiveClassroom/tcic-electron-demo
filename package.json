@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron .",
-    "build": "electron-builder --mac"
+    "build:mac": "electron-builder --mac",
+    "build:win": "electron-builder --win"
   },
   "build": {
     "productName": "tcic-demo",
@@ -27,7 +28,7 @@
       "**/node_modules/**/trtc-electron-sdk/build/**/*"
     ],
     "win": {
-      "target": ["nsis","zip"],
+      "target": ["nsis"],
       "extraFiles": [
         {
           "from": "node_modules/trtc-electron-sdk/build/Release/",
