@@ -6,12 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron .",
-    "build": "electron-builder --mac"
-  },
-  "overrides": {
-    "trtc-electron-sdk": {
-      "version": "12.5.705-beta.0"
-    }
+    "build:mac": "electron-builder --mac",
+    "build:win": "electron-builder --win"
   },
   "build": {
     "productName": "tcic-demo",
@@ -21,7 +17,7 @@
       "**/node_modules/**/trtc-electron-sdk/build/**/*"
     ],
     "win": {
-      "target": ["nsis","zip"],
+      "target": ["nsis"],
       "extraFiles": [
         {
           "from": "node_modules/trtc-electron-sdk/build/Release/",
