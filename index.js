@@ -1,5 +1,6 @@
 const TCIC = require('tcic-electron-sdk');
 const path = require('path');
+const { session } = require('electron');
 const { app, BrowserWindow, ipcMain, Menu } = require('electron');
 
 function createWindow () {   
@@ -28,6 +29,15 @@ ipcMain.on('toClass', (event, arg) => {
     classId: arg.classid,
     userId: arg.userid,
     token: arg.token,
+    // 主窗口 domReady 时触发
+    onReady: (mainWindow) => {
+      console.log('TCIC ready', mainWindow);
+      session.defaultSession.cookies.set({
+        url: 'https://class.qcloudclass.com',
+        name: 'custom_token',
+        value: 'custom.value',
+      });
+    },
   });
 });
 app.whenReady().then(createWindow);
