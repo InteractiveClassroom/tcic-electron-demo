@@ -11,6 +11,9 @@ contextBridge.exposeInMainWorld('sdk', {
       token
     });
   },
+  useWebMode: (value) => {
+    ipcRenderer.send('useWebMode', value);
+  },
   // 除函数之外，我们也可以暴露变量
 });
 
