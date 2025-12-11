@@ -4,22 +4,54 @@
     <meta charset="UTF-8">
     <title>LCIC DEMO</title>
     <style>
-      input {
+      input[type=text] {
         display: block;
         margin: 10px 0;
         padding: 5px;
         width: 400px;
       }
+      .link {
+        display: flex;
+      }
+      #webmode {
+        margin-left: 30px;
+      }
+      label {
+        margin-right: 10px;
+        font-size: 12px;
+        color: #2b2b2b;
+        text-decoration: none;
+      }
+      .checkbox {
+        display: flex;
+        align-items: center;
+      }
     </style>
   </head>
   <body>
     <h1>LCIC DEMO</h1>
-    <a href="https://class.qcloudclass.com/latest/login.html?lng=zh">从 demo页 创建</a>
+    <div class="link">
+      <a href="https://class.qcloudclass.com/latest/login.html?lng=zh">从 demo页 创建</a>
+      &nbsp;
+      <div class="checkbox">
+        <input type="checkbox" id="webmode" onchange="handleChange()"/>
+        <label for="webmode">进入网页版</label>
+      </div>
+
+    </div>
     <input type="text" id="classid" placeholder="Enter your classid">
     <input type="text" id="userid" placeholder="Enter your userid">
     <input type="text" id="token" placeholder="Enter your token">
     <button id="submit">进入</button>
     <script>
+      const handleChange = function() {
+        console.log('handleChange');
+        if (document.getElementById('webmode').checked) {
+          sdk.useWebMode(true);
+        } else {
+          sdk.useWebMode(false);
+        }
+      };
       document.addEventListener('DOMContentLoaded', function() {
         const classInfo = JSON.parse(localStorage.getItem('classInfo'));
         if (classInfo) {
