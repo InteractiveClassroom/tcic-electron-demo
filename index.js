@@ -22,6 +22,21 @@ function createWindow () {
   win.webContents.openDevTools(); 
 }
 
+// 自定义 js 与主进程通信
+// TCIC.SDK.instance.sendCustomMessage({xxx: 11111})
+// TCIC.SDK.instance.on(TCIC.TMainEvent.Recv_Custom_Msg, (evt) => console.log('custom msg', evt));
+
+// 主进程
+ipcMain.on('onRecvCustomMessage', (event, arg) => {
+  console.log('onRecvCustomMessage', arg);
+  if (tcicWindow) {
+    console.log('sendCustomMessage');
+    const tcicViews = tcicWindow.getBrowserViews();
+    console.log('tcicViews', tcicViews);
+    tcicViews[0].webContents.send('sendCustomMessage', `[main process] ${JSON.stringify(arg)}`);
+  }
+});
+
 
 ipcMain.on('toClass', (event, arg) => {
   event.reply('toClass', 'ok'); // 回复消息
