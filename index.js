@@ -5,6 +5,7 @@ const { app, BrowserWindow, ipcMain, Menu } = require('electron');
 
 
 let homeWindow;
+let useWebMode = false;
 
 function createWindow () {   
   app.commandLine.appendSwitch('ignore-certificate-errors');
