@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron .",
-    "build:mac": "electron-builder --mac",
+    "build:mac:x64": "electron-builder --mac --x64 --config=electron-builder.conf.js",
+    "build:mac": "electron-builder --mac --config=electron-builder.conf.js",
     "build:win": "electron-builder --win"
   },
   "build": {
@@ -17,7 +18,9 @@
       "**/node_modules/**/trtc-electron-sdk/build/**/*"
     ],
     "win": {
-      "target": ["nsis"],
+      "target": [
+        "nsis"
+      ],
       "extraFiles": [
         {
           "from": "node_modules/trtc-electron-sdk/build/Release/",
@@ -68,8 +71,7 @@
   "license": "ISC",
   "dependencies": {
     "lcic-electron-hotupdater": "^0.1.0-latest.6",
-    "tcic-electron-sdk": "^1.10.0-beta.250909.2052.7",
-    "trtc-electron-sdk": "^12.5.705-beta.0"
+    "tcic-electron-sdk": "^1.10.0-beta.251111.1245.6"
   },
   "devDependencies": {
     "electron": "24.8.8",
