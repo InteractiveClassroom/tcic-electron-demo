@@ -9,6 +9,7 @@ let useWebMode = false;
 
 function createWindow () {   
   app.commandLine.appendSwitch('ignore-certificate-errors');
+  TCIC.preload();
   // 创建浏览器窗口
   homeWindow = new BrowserWindow({
     width: 1200,
@@ -47,7 +48,9 @@ ipcMain.on('toClass', (event, arg) => {
   if (useWebMode) {
     homeWindow.loadURL(`https://class.qcloudclass.com/latest/class.html?classid=${arg.classid}&userid=${arg.userid}&token=${arg.token}&electronIframe=true`);
     return;
-  } 
+  }
+  console.time('init-time');
+  console.time('navigate') 
   TCIC.initialize({
     classId: arg.classid,
     userId: arg.userid,
@@ -55,6 +58,7 @@ ipcMain.on('toClass', (event, arg) => {
     // 主窗口 domReady 时触发
     onReady: (mainWindow) => {
       console.log('TCIC ready', mainWindow);
+      console.timeEnd('init-time');
       session.defaultSession.cookies.set({
         url: 'https://class.qcloudclass.com',
         name: 'custom_token',
