@@ -6,7 +6,7 @@ const pkg = require('./package.json');
 /**
  * electron-builder 配置
  * 复用 package.json 中的 build 配置，并在 afterPack 阶段
- * 将 dist/mac/<app>.app/Contents/Resources/app.asar.unpacked/node_modules/trtc-electron-sdk
+ * 将 dist/mac/<app>.app/Contents/Resources/app.asar.unpacked/node_modules/@tcic/trtc-electron-sdk
  * 下的 trtc_electron_sdk.node 替换为 x64 目录下的版本。
  */
 module.exports = {

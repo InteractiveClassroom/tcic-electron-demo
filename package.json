@@ -1,17 +1,17 @@
 {
-  "name": "tcic-electron",
+  "name": "tcic-electron-demo",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "electron .",
+    "start": "electron . --inspect",
     "build:mac:x64": "electron-builder --mac --x64 --config=electron-builder.conf.js",
     "build:mac": "electron-builder --mac --config=electron-builder.conf.js",
     "build:win": "electron-builder --win"
   },
   "build": {
-    "productName": "tcic-demo",
+    "productName": "tcic-electron-demo",
     "asarUnpack": [
       "**/*.{node,dll}",
       "**/node_modules/**/tcic-electron-sdk/dist/assets/**/*",
@@ -54,13 +54,12 @@
     },
     "mac": {
       "target": "dmg",
+      "hardenedRuntime": true,
+      "entitlements": "./entitlements.mac.plist",
+      "entitlementsInherit": "./entitlements.mac.plist",
       "extraFiles": [
         {
-          "from": "node_modules/trtc-electron-sdk/build/Release/${arch}/trtc_electron_sdk.node",
-          "to": "./"
-        },
-        {
-          "from": "node_modules/trtc-electron-sdk/build/mac-framework/${arch}/",
+          "from": "node_modules/@tcic/trtc-electron-sdk/build/mac-framework/${arch}/",
           "to": "./Frameworks"
         }
       ]
@@ -71,10 +70,10 @@
   "license": "ISC",
   "dependencies": {
     "lcic-electron-hotupdater": "^0.1.0-latest.6",
-    "tcic-electron-sdk": "^1.10.0-beta.251111.1245.6"
+    "tcic-electron-sdk": "1.10.2-beta.260706.1030.18"
   },
   "devDependencies": {
-    "electron": "24.8.8",
+    "electron": "30.5.1",
     "electron-builder": "^25.1.8"
   }
 }
