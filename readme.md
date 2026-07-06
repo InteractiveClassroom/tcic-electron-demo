@@ -14,7 +14,7 @@ npm start
 npm run build
 ```
 
-### 虚拟背景
+### Mac端虚拟背景
 如果需要用到虚拟背景，请安装`trtc-electron-plugin-xmagic`插件
 ```
 npm i trtc-electron-plugin-xmagic --save
